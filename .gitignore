@@ -1,1 +1,2 @@
-./static/temp/*
+static/temp/
+__pycache__/

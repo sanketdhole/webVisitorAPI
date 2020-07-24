@@ -35,6 +35,8 @@ class ImageDownloader:
         res = self.getImage(filename)
         if(res == "error"):
             return res
+        del self.mapper[filename]
+        del self.urlsMapper[filename]
         return "/static/temp/"+filename
     
     def getImage(self, filename):
@@ -56,4 +58,12 @@ class ImageDownloader:
                 diff = currentTimeStamp - lastModified
                 if((diff/(24*60*60)) > 1):
                     os.remove(file)
+                    print(file)
+
+    def getCount(self):
+        return self.count
+
+if __name__=="__main__":
+    i = ImageDownloader()
+    i.removeOldFiles()
             

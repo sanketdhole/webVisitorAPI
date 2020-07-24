@@ -23,6 +23,11 @@ def getImage():
     imageDownloader.removeOldFiles()
     if request.method == "POST":
         return imageDownloader.addUrl(request.form['url'])
+
+@app.route("/count")
+def getCount():
+    imageDownloader.removeOldFiles()
+    return jsonify({'count':imageDownloader.getCount()})
             
 
 
